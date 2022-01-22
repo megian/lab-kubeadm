@@ -1,0 +1,4 @@
+.vagrantuser
+.vagrant/
+tmp
+airgap/*.tar.gz
