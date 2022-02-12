@@ -24,6 +24,7 @@ apt-get update
 # apt-get remove -y linux-image-*[^cloud]-amd64
 
 # remove not required apckages
+# https://wiki.debian.org/ReduceDebian
 APT_PACKAGES=""
 
 APT_PACKAGES=" acpi aptitude at aspell aspell-en avahi-daemon bc bin86 console-common console-data console-tools dc debian-faq"
