@@ -8,15 +8,15 @@ A friendly fork of [rgl/rke2-vagrant](https://github.com/rgl/rke2-vagrant). Than
 
 Check [libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt#installation) documentation for installation.
 
+Vagrant:
+```bash
+sudo apt install vagrant
+```
+
 Install the required vagrant plugins:
 
 ```bash
 sudo vagrant plugin install vagrant-hosts vagrant-libvirt
-```
-
-Vagrant:
-```bash
-sudo apt install vagrant
 ```
 
 Launch the environment:
