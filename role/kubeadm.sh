@@ -46,12 +46,24 @@ step "Prefetch kubeadm images"
 # We do not need kube-proxy because cilium will take over this part
 time kubeadm config images list | grep -v kube-proxy | xargs -L1 crictl pull
 
+# Generate certificate if not exist
+[ ! -f /vagrant/tmp/certificate-key ] && openssl rand -hex 32 > /vagrant/tmp/certificate-key
+
 if [ "$kubeadm_command" == 'cluster-init' ]; then
   step "Cluster Init"
 
+    #   n1: Image is up to date for k8s.gcr.io/kube-apiserver@sha256:add26e08df876fd8b92a53fab000bade34f624693f7944595776b75be17e5269
+    # n1: Image is up to date for k8s.gcr.io/kube-controller-manager@sha256:21497e34aa9ac971040333d886e4755dbe5770310a1da233f83fecf28231f20e
+    # n1: Image is up to date for k8s.gcr.io/kube-scheduler@sha256:32308abe86f7415611ca86ee79dd0a73e74ebecb2f9e3eb85fc3a8e62f03d0e7
+    # n1: Image is up to date for k8s.gcr.io/pause@sha256:3d380ca8864549e74af4b29c10f9cb0956236dfb01c40ca076fb6c37253234db
+    # n1: Image is up to date for k8s.gcr.io/etcd@sha256:05c1a3be66823dcaca55ebe17c3c9a60de7ceb948047da3e95308348325ddd5a
+    # n1: Image is up to date for k8s.gcr.io/coredns/coredns@sha256:5b6ec0d6de9baaf3e92d0f66cd96a25b9edbce8716f5f15dcd1a616b3abd590e
+
   # https://docs.cilium.io/en/v1.11/gettingstarted/k8s-install-kubeadm/#create-the-cluster
   # https://docs.cilium.io/en/v1.11/gettingstarted/kubeproxy-free/#kubeproxy-free
-  kubeadm init --control-plane-endpoint vip.$(hostname --domain) --pod-network-cidr 10.12.0.0/16 --service-cidr 10.13.0.0/16 --skip-phases=addon/kube-proxy
+  # https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#uploading-control-plane-certificates-to-the-cluster
+  kubeadm init --control-plane-endpoint vip.$(hostname --domain) --service-cidr 10.13.0.0/16 --skip-phases=addon/kube-proxy --upload-certs --certificate-key=$(cat /vagrant/tmp/certificate-key)
+  # --pod-network-cidr 10.1.0.0/16
 
   # TODO: Check --upload-certs
   # https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#uploading-control-plane-certificates-to-the-cluster
@@ -65,7 +77,7 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
   join=$(kubeadm token create --print-join-command)
 
   # Unsecure control-plane token
-  echo "$join --control-plane" > /vagrant/tmp/join-controlplane
+  echo "$join --control-plane --certificate-key=$(cat /vagrant/tmp/certificate-key)" > /vagrant/tmp/join-controlplane
   echo /vagrant/tmp/join-controlplane
 
   # Unsecure worker token
@@ -94,15 +106,15 @@ fi
 if [ "$kubeadm_command" == 'cluster-join' ]; then
   step "Cluster Join"
 
-  mkdir -p /etc/kubernetes/
-  cp -r /vagrant/tmp/pki/ /etc/kubernetes/
+  #mkdir -p /etc/kubernetes/
+  #cp -r /vagrant/tmp/pki/ /etc/kubernetes/
 
-  step "Show etcd CA certificate"
-  openssl x509 -noout -in /etc/kubernetes/pki/etcd/ca.crt -issuer -subject -dates
-  step "Show kubernetes CA certificate"
-  openssl x509 -noout -in /etc/kubernetes/pki/ca.crt -issuer -subject -dates
-  step "Show front-proxy-ca certificate"
-  openssl x509 -noout -in /etc/kubernetes/pki/front-proxy-ca.crt -issuer -subject -dates
+  #step "Show etcd CA certificate"
+  #openssl x509 -noout -in /etc/kubernetes/pki/etcd/ca.crt -issuer -subject -dates
+  #step "Show kubernetes CA certificate"
+  #openssl x509 -noout -in /etc/kubernetes/pki/ca.crt -issuer -subject -dates
+  #step "Show front-proxy-ca certificate"
+  #openssl x509 -noout -in /etc/kubernetes/pki/front-proxy-ca.crt -issuer -subject -dates
 
   source /vagrant/tmp/join-controlplane
 fi
