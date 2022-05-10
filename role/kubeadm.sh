@@ -46,6 +46,9 @@ step "Prefetch kubeadm images"
 # We do not need kube-proxy because cilium will take over this part
 time kubeadm config images list | grep -v kube-proxy | xargs -L1 crictl pull
 
+# Generate the tmp directory
+install -d /vagrant/tmp/
+
 # Generate certificate if not exist
 [ ! -f /vagrant/tmp/certificate-key ] && openssl rand -hex 32 > /vagrant/tmp/certificate-key
 
@@ -73,7 +76,6 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
   # cluster-dns: 10.13.0.10  # default: 10.96.0.10
   # cluster-domain: cluster.local
 
-  mkdir -p /vagrant/tmp
   join=$(kubeadm token create --print-join-command)
 
   # Unsecure control-plane token
