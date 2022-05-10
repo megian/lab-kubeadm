@@ -11,7 +11,7 @@ helm install cilium cilium/cilium --version 1.11.1 \
     --set kubeProxyReplacement=strict \
     --set k8sServiceHost=vip.$(hostname -d) \
     --set k8sServicePort=6443 \
-    --set ipam=kubernetes \
+    --set ipam.mode=kubernetes \
     --set tunnel=disabled \
     --set enable-endpoint-routes=true \
     --set enable-local-node-route=false
