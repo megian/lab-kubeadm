@@ -8,9 +8,23 @@ A friendly fork of [rgl/rke2-vagrant](https://github.com/rgl/rke2-vagrant). Than
 
 Check [libvirt](https://github.com/vagrant-libvirt/vagrant-libvirt#installation) documentation for installation.
 
-Vagrant:
+## Debian
+
+Vagrant Debian:
 ```bash
 sudo apt install vagrant
+```
+
+## Arch
+
+Vagrant Arch:
+```bash
+sudo pacman -S vagrant libvirt pkg-config
+```
+
+Arch for NFS:
+```bash
+sudo pacman -S nfs-utils
 ```
 
 Install the required vagrant plugins:
