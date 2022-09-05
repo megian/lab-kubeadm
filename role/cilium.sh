@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-# https://docs.cilium.io/en/v1.11/gettingstarted/kubeproxy-free/#quick-start
+# https://docs.cilium.io/en/v1.12/gettingstarted/kubeproxy-free/#quick-start
 helm repo add cilium https://helm.cilium.io/
 
 helm search repo cilium --versions | head

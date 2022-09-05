@@ -58,8 +58,8 @@ install -d /vagrant/tmp/
 if [ "$kubeadm_command" == 'cluster-init' ]; then
   step "Cluster Init"
 
-  # https://docs.cilium.io/en/v1.11/gettingstarted/k8s-install-kubeadm/#create-the-cluster
-  # https://docs.cilium.io/en/v1.11/gettingstarted/kubeproxy-free/#kubeproxy-free
+  # https://docs.cilium.io/en/v1.12/gettingstarted/k8s-install-kubeadm/#create-the-cluster
+  # https://docs.cilium.io/en/v1.12/gettingstarted/kubeproxy-free/#kubeproxy-free
   # https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#uploading-control-plane-certificates-to-the-cluster
   kubeadm init --control-plane-endpoint vip.$(hostname --domain) --service-cidr 10.13.0.0/16 --skip-phases=addon/kube-proxy --upload-certs --certificate-key=$(cat /vagrant/tmp/certificate-key)
   # --pod-network-cidr 10.1.0.0/16
