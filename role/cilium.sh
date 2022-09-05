@@ -6,7 +6,7 @@ helm repo add cilium https://helm.cilium.io/
 
 helm search repo cilium --versions | head
 
-helm upgrade --install cilium cilium/cilium --version 1.11.4 \
+helm upgrade --install cilium cilium/cilium --version 1.12.1 \
     --namespace kube-system \
     --set kubeProxyReplacement=strict \
     --set k8sServiceHost=vip.$(hostname -d) \
@@ -23,3 +23,5 @@ helm upgrade --install cilium cilium/cilium --version 1.11.4 \
 # Requires --allocate-node-cidrs on the kubernetes controller
 
 # cilium status --wait
+
+# cilium connectivity test
