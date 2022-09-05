@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-VERSION="${1:-1.23}"; shift || true
+VERSION="${1:-1.24}"; shift || true
 OS="${1:-Debian_11}"; shift || true
 
 # Installing runtime CRI-O
