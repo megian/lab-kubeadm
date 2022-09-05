@@ -8,3 +8,7 @@ crictl pods
 
 step "list running containers"
 crictl ps
+
+# Remove control-plane taints
+# kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+# kubectl taint nodes --all node-role.kubernetes.io/master-
