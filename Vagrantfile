@@ -12,7 +12,7 @@ etcd_version = 'v3.5.1'
 # see https://github.com/derailed/k9s/releases
 k9s_version = 'v0.25.18'
 # see https://github.com/kubernetes-sigs/krew/releases
-krew_version = 'v0.4.2'
+krew_version = 'v0.4.3'
 
 number_of_allinone_vm     = 3
 number_of_controlplane_vm = 0
