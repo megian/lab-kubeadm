@@ -19,7 +19,7 @@ sudo apt install vagrant
 
 Vagrant Arch:
 ```bash
-sudo pacman -S vagrant libvirt pkg-config
+sudo pacman -S vagrant libvirt pkg-config dnsmasq
 ```
 
 Arch for NFS:
