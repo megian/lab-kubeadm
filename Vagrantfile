@@ -10,7 +10,7 @@ kubeadm_version = 'latest'
 # NB make sure you use a compatible version
 etcd_version = 'v3.5.1'
 # see https://github.com/derailed/k9s/releases
-k9s_version = 'v0.25.18'
+k9s_version = 'v0.26.3'
 # see https://github.com/kubernetes-sigs/krew/releases
 krew_version = 'v0.4.3'
 
