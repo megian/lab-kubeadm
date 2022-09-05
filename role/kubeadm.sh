@@ -2,6 +2,7 @@
 set -euxo pipefail
 
 kubeadm_command="${1:-cluster-init}"; shift || true
+kubeadm_version="${1:-1.24.4-00}"; shift || true
 
 function step (
     # Black        0;30     Dark Gray     1;30
@@ -25,9 +26,11 @@ curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.
 step "Add the Kubernetes apt repository"
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 
+# apt list -a kubeadm
+
 step "Update apt package index, install kubelet, kubeadm and kubectl, and pin their version"
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+apt-get install -y kubelet=$kubeadm_version kubeadm=$kubeadm_version kubectl=$kubeadm_version
 apt-mark hold kubelet kubeadm kubectl
 
 kubectl completion bash >/usr/share/bash-completion/completions/kubectl
@@ -55,13 +58,6 @@ install -d /vagrant/tmp/
 if [ "$kubeadm_command" == 'cluster-init' ]; then
   step "Cluster Init"
 
-    #   n1: Image is up to date for k8s.gcr.io/kube-apiserver@sha256:add26e08df876fd8b92a53fab000bade34f624693f7944595776b75be17e5269
-    # n1: Image is up to date for k8s.gcr.io/kube-controller-manager@sha256:21497e34aa9ac971040333d886e4755dbe5770310a1da233f83fecf28231f20e
-    # n1: Image is up to date for k8s.gcr.io/kube-scheduler@sha256:32308abe86f7415611ca86ee79dd0a73e74ebecb2f9e3eb85fc3a8e62f03d0e7
-    # n1: Image is up to date for k8s.gcr.io/pause@sha256:3d380ca8864549e74af4b29c10f9cb0956236dfb01c40ca076fb6c37253234db
-    # n1: Image is up to date for k8s.gcr.io/etcd@sha256:05c1a3be66823dcaca55ebe17c3c9a60de7ceb948047da3e95308348325ddd5a
-    # n1: Image is up to date for k8s.gcr.io/coredns/coredns@sha256:5b6ec0d6de9baaf3e92d0f66cd96a25b9edbce8716f5f15dcd1a616b3abd590e
-
   # https://docs.cilium.io/en/v1.11/gettingstarted/k8s-install-kubeadm/#create-the-cluster
   # https://docs.cilium.io/en/v1.11/gettingstarted/kubeproxy-free/#kubeproxy-free
   # https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#uploading-control-plane-certificates-to-the-cluster
@@ -88,7 +84,7 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
 
   # TODO: don't get ready because cilium isn't there yet
   # wait for this node to be Ready.
-  # e.g. n1     Ready    control-plane,master   3m54s   v1.23.2
+  # e.g. n1     Ready    control-plane,master   3m54s   v1.24.4
   #$SHELL -c 'node_name=$(hostname); echo "waiting for node $node_name to be ready..."; while [ -z "$(kubectl get nodes $node_name | grep -E "$node_name\s+Ready\s+")" ]; do sleep 3; done; echo "node ready!"'
 
   step "Show etcd CA certificate"

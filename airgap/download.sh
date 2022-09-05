@@ -3,11 +3,12 @@
 
 # root@n1:~# crictl images
 # IMAGE                                TAG                 IMAGE ID            SIZE
-# ghcr.io/kube-vip/kube-vip            v0.4.1              d57c22854e017       39.8MB
+# docker.io/coredns/coredns            <none>              5185b96f0becf       48.9MB
+# ghcr.io/kube-vip/kube-vip            v0.5.0              09067696476ff       37.9MB
 # k8s.gcr.io/coredns/coredns           v1.8.6              a4ca41631cc7a       47MB
-# k8s.gcr.io/etcd                      3.5.1-0             25f8c7f3da61c       294MB
-# k8s.gcr.io/kube-apiserver            v1.23.2             8a0228dd6a683       137MB
-# k8s.gcr.io/kube-controller-manager   v1.23.2             4783639ba7e03       126MB
-# k8s.gcr.io/kube-proxy                v1.23.2             d922ca3da64b3       114MB
-# k8s.gcr.io/kube-scheduler            v1.23.2             6114d758d6d16       54.8MB
-# k8s.gcr.io/pause                     3.6                 6270bb605e12e       690kB
+# k8s.gcr.io/etcd                      3.5.3-0             aebe758cef4cd       301MB
+# k8s.gcr.io/kube-apiserver            v1.24.4             6cab9d1bed1be       131MB
+# k8s.gcr.io/kube-controller-manager   v1.24.4             1f99cb6da9a82       121MB
+# k8s.gcr.io/kube-proxy                v1.24.4             7a53d1e08ef58       112MB
+# k8s.gcr.io/kube-scheduler            v1.24.4             03fa22539fc1c       52.3MB
+# k8s.gcr.io/pause                     3.7                 221177c6082a8       718kB
