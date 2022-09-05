@@ -124,3 +124,7 @@ fi
 # https://kubernetes.io/docs/concepts/cluster-administration/addons/
 
 kubectl get node
+
+# Remove control-plane taints
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+kubectl taint nodes --all node-role.kubernetes.io/master-
