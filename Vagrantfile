@@ -5,7 +5,7 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 require 'ipaddr'
 
 # see https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
-kubeadm_version = 'latest'
+kubeadm_version = '1.24.4-00'
 # see https://github.com/etcd-io/etcd/releases
 # NB make sure you use a compatible version
 etcd_version = 'v3.5.1'
@@ -83,8 +83,8 @@ Vagrant.configure(2) do |config|
         'eth1',
       ]
       config.vm.provision 'shell', path: 'role/kubeadm.sh', args: [
-        n == 1 ? "cluster-init" : "cluster-join"
-      #   krew_version
+        n == 1 ? "cluster-init" : "cluster-join",
+        kubeadm_version,
       ]
       config.vm.provision 'shell', path: 'role/cilium-cli.sh'
       if n == 1
