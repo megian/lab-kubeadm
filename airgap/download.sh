@@ -1,6 +1,7 @@
 #!/bin/sh
 # curl -OLs https://github.com/.tar.gz
 
+# root@n1:~# kubeadm config images pull
 # root@n1:~# crictl images
 # IMAGE                                TAG                 IMAGE ID            SIZE
 # docker.io/coredns/coredns            <none>              5185b96f0becf       48.9MB
