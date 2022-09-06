@@ -89,11 +89,15 @@ Vagrant.configure(2) do |config|
       config.vm.provision 'shell', path: 'role/cilium-cli.sh'
       if n == 1
         config.vm.provision 'shell', path: 'role/cilium.sh'
-        # config.vm.provision 'shell', path: 'k8s/example-app.sh'
       end
       
       config.vm.provision 'shell', path: 'role/etcdctl.sh', args: [etcd_version]
       config.vm.provision 'shell', path: 'role/k9s.sh', args: [k9s_version]
+
+      if n == 3
+        config.vm.provision 'shell', path: 'role/postconfig.sh'
+        # config.vm.provision 'shell', path: 'k8s/example-app.sh'
+      end
       config.vm.provision 'shell', path: 'role/show.sh'
     end
   end
