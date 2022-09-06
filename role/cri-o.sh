@@ -8,7 +8,7 @@ OS="${1:-Debian_11}"; shift || true
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o
 
 ## Letting iptables see bridged traffic
-## https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+## https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic
 
 # Create the .conf file to load the modules at bootup
 cat <<EOF | tee /etc/modules-load.d/crio.conf
