@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 kubeadm_command="${1:-cluster-init}"; shift || true
-kubeadm_version="${1:-1.24.4-00}"; shift || true
+kubeadm_version="${1:-1.25.0-00}"; shift || true
 
 function step (
     # Black        0;30     Dark Gray     1;30
@@ -84,7 +84,7 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
 
   # TODO: don't get ready because cilium isn't there yet
   # wait for this node to be Ready.
-  # e.g. n1     Ready    control-plane,master   3m54s   v1.24.4
+  # e.g. n1     Ready    control-plane,master   3m54s   v1.25.0
   #$SHELL -c 'node_name=$(hostname); echo "waiting for node $node_name to be ready..."; while [ -z "$(kubectl get nodes $node_name | grep -E "$node_name\s+Ready\s+")" ]; do sleep 3; done; echo "node ready!"'
 
   step "Show etcd CA certificate"
