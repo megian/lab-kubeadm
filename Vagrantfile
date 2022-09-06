@@ -8,7 +8,7 @@ require 'ipaddr'
 kubeadm_version = '1.24.4-00'
 # see https://github.com/etcd-io/etcd/releases
 # NB make sure you use a compatible version
-etcd_version = 'v3.5.1'
+etcd_version = 'v3.5.4'
 # see https://github.com/derailed/k9s/releases
 k9s_version = 'v0.26.3'
 # see https://github.com/kubernetes-sigs/krew/releases
