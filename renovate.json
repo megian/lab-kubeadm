@@ -10,7 +10,7 @@
   {
     "fileMatch": ["^Vagrantfile$"],
     "matchStrings": [
-      "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_version:\\s(?<currentValue>.*)"
+      "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_version\\s=\\s=\\s'(?<currentValue>.+)'"
     ],
     "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
   },
