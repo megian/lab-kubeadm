@@ -17,7 +17,7 @@
   {
     "fileMatch": ["^role\\/.*\\.sh$"],
     "matchStrings": [
-      "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION:\\s(?<currentValue>.*)"
+      "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=(?<currentValue>.*)"
     ],
     "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
   }
