@@ -6,18 +6,20 @@
   "labels": [
     "dependency"
   ],
-  "regexManagers": [{
+  "regexManagers": [
+  {
     "fileMatch": ["^Vagrantfile$"],
     "matchStrings": [
       "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_version:\\s(?<currentValue>.*)"
     ],
     "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-  }],
-  "regexManagers": [{
+  },
+  {
     "fileMatch": ["^role/.*\\.sh$"],
     "matchStrings": [
       "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION:\\s(?<currentValue>.*)"
     ],
     "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-  }]
+  }
+  ]
 }
