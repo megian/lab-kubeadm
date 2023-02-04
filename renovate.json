@@ -6,9 +6,6 @@
   "labels": [
     "dependency"
   ],
-  "registryAliases": {
-    "cilium": "https://helm.cilium.io"
-  },
   "regexManagers": [
   {
     "fileMatch": ["^Vagrantfile$"],
@@ -19,6 +16,9 @@
   },
   {
     "fileMatch": ["^role\\/.*\\.sh$"],
+    "registryAliases": {
+      "cilium": "https://helm.cilium.io"
+    },
     "matchStrings": [
       "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=(?<currentValue>.*)"
     ],
