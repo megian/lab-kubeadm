@@ -14,6 +14,7 @@ etcd_version = 'v3.5.7'
 # renovate: datasource=github-releases depName=derailed/k9s versioning=semver-coerced
 k9s_version = 'v0.27.2'
 # see https://github.com/kubernetes-sigs/krew/releases
+# renovate: datasource=github-releases depName=kubernetes-sigs/krew versioning=semver-coerced
 krew_version = 'v0.4.3'
 
 number_of_allinone_vm     = 3
