@@ -6,7 +6,7 @@ helm repo add cilium https://helm.cilium.io/
 
 helm search repo cilium --versions | head
 
-# renovate: datasource=helm depName=cilium/cilium
+# renovate: datasource=helm registryUrl=https://helm.cilium.io depName=cilium/cilium
 CILIUM_HELM_CHART_VERSION=1.12.1
 
 helm upgrade --install cilium cilium/cilium --version $CILIUM_HELM_CHART_VERSION \
