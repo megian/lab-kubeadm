@@ -12,7 +12,7 @@ kubeadm_version = '1.26.1-00'
 etcd_version = 'v3.5.8'
 # see https://github.com/derailed/k9s/releases
 # renovate: datasource=github-releases depName=derailed/k9s versioning=semver-coerced
-k9s_version = 'v0.27.3'
+k9s_version = 'v0.27.4'
 # see https://github.com/kubernetes-sigs/krew/releases
 # renovate: datasource=github-releases depName=kubernetes-sigs/krew versioning=semver-coerced
 krew_version = 'v0.4.3'
