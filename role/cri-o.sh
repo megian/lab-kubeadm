@@ -44,26 +44,11 @@ apt-mark hold cri-o cri-o-runc
 systemctl daemon-reload
 systemctl enable crio --now
 
-# https://github.com/kubernetes-sigs/cri-tools
-VERSION="v1.26.1"
-wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
-sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-rm -f crictl-$VERSION-linux-amd64.tar.gz
-
-# install the bash completion scripts.
-crictl completion bash >/usr/share/bash-completion/completions/crictl
-
 ## Show status
 systemctl status cri-o
 
 crio-status --version
 crio-status info
-
-crictl version
-crictl ps
-crictl images
-
-# Cleaning CRI-O storage https://docs.openshift.com/container-platform/4.12/support/troubleshooting/troubleshooting-crio-issues.html
 
 # show listening ports.
 ss -n --tcp --listening --processes

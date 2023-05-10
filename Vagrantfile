@@ -101,6 +101,7 @@ Vagrant.configure(2) do |config|
         config.vm.provision 'shell', path: 'role/postconfig.sh'
         # config.vm.provision 'shell', path: 'k8s/example-app.sh'
       end
+      config.vm.provision 'shell', path: 'role/crictl.sh'
       config.vm.provision 'shell', path: 'role/show.sh'
     end
   end
