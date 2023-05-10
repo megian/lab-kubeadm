@@ -8,7 +8,7 @@ VIP="$1"; shift
 INTERFACE="${1:-}"; shift || true
 IMAGE_TAG="${1:-$IMAGE_TAG_LATEST}"; shift || true
 
-# https://kube-vip.chipzoller.dev/docs/installation/static/
+# https://kube-vip.io/docs/installation/static/
 
 # Prefetch image
 # crictl pull ghcr.io/kube-vip/kube-vip:$IMAGE_TAG
@@ -16,7 +16,7 @@ IMAGE_TAG="${1:-$IMAGE_TAG_LATEST}"; shift || true
 # Create kubernetes manifests directory
 mkdir -p /etc/kubernetes/manifests/
 
-# https://kube-vip.chipzoller.dev/docs/installation/static/#arp
+# https://kube-vip.io/docs/installation/static/#arp
 #
 # crictl run ghcr.io/kube-vip/kube-vip:$KVVERSION vip /kube-vip \
 #     manifest pod \
