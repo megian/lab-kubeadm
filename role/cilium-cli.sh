@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-# https://docs.cilium.io/en/v1.12/gettingstarted/k8s-install-kubeadm/#validate-the-installation
+# https://docs.cilium.io/en/v1.13/installation/k8s-install-kubeadm/
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/master/stable.txt)
 CLI_ARCH=amd64
 if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
