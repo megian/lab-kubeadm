@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-VERSION="${1:-1.25}"; shift || true
+VERSION="${1:-1.26}"; shift || true
 OS="${1:-Debian_11}"; shift || true
 
 # Installing runtime CRI-O
@@ -37,13 +37,18 @@ curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/Release.key | gpg --dearmor -o /usr/share/keyrings/libcontainers-crio-archive-keyring.gpg
 
 apt-get update
-apt-get install -y cri-o cri-o-runc cri-tools
+apt-get install -y cri-o cri-o-runc
 apt-mark hold cri-o cri-o-runc
-# https://github.com/kubernetes-sigs/cri-tools
 
 ## Start CRI-O
 systemctl daemon-reload
 systemctl enable crio --now
+
+# https://github.com/kubernetes-sigs/cri-tools
+VERSION="v1.26.1"
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+rm -f crictl-$VERSION-linux-amd64.tar.gz
 
 # install the bash completion scripts.
 crictl completion bash >/usr/share/bash-completion/completions/crictl
@@ -58,7 +63,7 @@ crictl version
 crictl ps
 crictl images
 
-# Cleaning CRI-O storage https://docs.openshift.com/container-platform/4.9/support/troubleshooting/troubleshooting-crio-issues.html#cleaning-crio-storage
+# Cleaning CRI-O storage https://docs.openshift.com/container-platform/4.12/support/troubleshooting/troubleshooting-crio-issues.html
 
 # show listening ports.
 ss -n --tcp --listening --processes
