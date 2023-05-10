@@ -84,7 +84,7 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
 
   # TODO: don't get ready because cilium isn't there yet
   # wait for this node to be Ready.
-  # e.g. n1     Ready    control-plane,master   3m54s   v1.25.0
+  # e.g. n1     Ready    control-plane,master   3m54s   v1.27.0
   #$SHELL -c 'node_name=$(hostname); echo "waiting for node $node_name to be ready..."; while [ -z "$(kubectl get nodes $node_name | grep -E "$node_name\s+Ready\s+")" ]; do sleep 3; done; echo "node ready!"'
 
   step "Show etcd CA certificate"
