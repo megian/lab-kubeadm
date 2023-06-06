@@ -47,8 +47,8 @@ cluster_k8s_api  = "https://#{cluster_vip_name}:6443"
 application_domain = 'apps.kubeadm.lab'
 
 Vagrant.configure(2) do |config|
-  # https://app.vagrantup.com/generic/boxes/debian11
-  config.vm.box = 'generic/debian11'
+  # https://app.vagrantup.com/debian
+  config.vm.box = 'debian/bullseye64'
 
   # https://github.com/vagrant-libvirt/vagrant-libvirt
   config.vm.provider 'libvirt' do |lv, config|
