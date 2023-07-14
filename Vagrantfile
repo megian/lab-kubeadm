@@ -15,7 +15,7 @@ etcd_version = 'v3.5.9'
 k9s_version = 'v0.27.4'
 # see https://github.com/kubernetes-sigs/krew/releases
 # renovate: datasource=github-releases depName=kubernetes-sigs/krew versioning=semver-coerced
-krew_version = 'v0.4.3'
+krew_version = 'v0.4.4'
 
 number_of_allinone_vm     = 3
 number_of_controlplane_vm = 0
