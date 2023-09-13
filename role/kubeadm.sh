@@ -20,9 +20,6 @@ function step (
     echo -e "${BLUE}== ${1} ==${NC}"
 )
 
-# TODO: Remove after upgrading to Debian 12
-mkdir -p /etc/apt/keyrings
-
 step "Download the Google Cloud public signing key"
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 

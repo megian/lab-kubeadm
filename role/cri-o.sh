@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 VERSION="${1:-1.27}"; shift || true
-OS="${1:-Debian_11}"; shift || true
+OS="${1:-Debian_12}"; shift || true
 
 # Installing runtime CRI-O
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o
