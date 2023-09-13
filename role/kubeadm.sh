@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 kubeadm_command="${1:-cluster-init}"; shift || true
-kubeadm_version="${1:-1.25.0-00}"; shift || true
+kubeadm_version="${1:-1.28*}"; shift || true
 
 function step (
     # Black        0;30     Dark Gray     1;30
@@ -20,11 +20,11 @@ function step (
     echo -e "${BLUE}== ${1} ==${NC}"
 )
 
-step "Download the Google Cloud public signing key"
-curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+step "Download the public signing key for the Kubernetes package repositories"
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 step "Add the Kubernetes apt repository"
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # apt list -a kubeadm
 
@@ -84,7 +84,7 @@ if [ "$kubeadm_command" == 'cluster-init' ]; then
 
   # TODO: don't get ready because cilium isn't there yet
   # wait for this node to be Ready.
-  # e.g. n1     Ready    control-plane,master   3m54s   v1.27.0
+  # e.g. n1     Ready    control-plane,master   3m54s   v1.28.0
   #$SHELL -c 'node_name=$(hostname); echo "waiting for node $node_name to be ready..."; while [ -z "$(kubectl get nodes $node_name | grep -E "$node_name\s+Ready\s+")" ]; do sleep 3; done; echo "node ready!"'
 
   step "Show etcd CA certificate"
