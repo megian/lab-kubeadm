@@ -9,7 +9,7 @@ kubeadm_version = '1.28.1-1.1'
 # see https://github.com/etcd-io/etcd/releases
 # NB make sure you use a compatible version
 # renovate: datasource=github-releases depName=etcd-io/etcd versioning=semver-coerced
-etcd_version = 'v3.5.9'
+etcd_version = 'v3.5.11'
 # see https://github.com/derailed/k9s/releases
 # renovate: datasource=github-releases depName=derailed/k9s versioning=semver-coerced
 k9s_version = 'v0.29.1'
