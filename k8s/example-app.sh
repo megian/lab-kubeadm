@@ -33,7 +33,7 @@ metadata:
   name: example-app
 spec:
   selector:
-    app: example-app
+    app.kubernetes.io/name: example-app
   type: ClusterIP
   ports:
     - name: web
@@ -45,6 +45,7 @@ spec:
 # see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#daemonset-v1-apps
 # see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#podtemplatespec-v1-core
 # see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.28/#container-v1-core
+# see https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -52,11 +53,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: example-app
+      app.kubernetes.io/name: example-app
   template:
     metadata:
       labels:
-        app: example-app
+        app.kubernetes.io/name: example-app
     spec:
       nodeSelector:
         kubernetes.io/os: linux
