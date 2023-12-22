@@ -77,18 +77,6 @@ spec:
         - name: tls
           mountPath: /etc/dex/tls
 
-        #env:
-        #- name: GITHUB_CLIENT_ID
-        #  valueFrom:
-        #    secretKeyRef:
-        #      name: github-client
-        #      key: client-id
-        #- name: GITHUB_CLIENT_SECRET
-        #  valueFrom:
-        #    secretKeyRef:
-        #      name: github-client
-        #      key: client-secret
-
         readinessProbe:
           httpGet:
             path: /healthz
@@ -121,15 +109,6 @@ data:
       https: 0.0.0.0:5556
       tlsCert: /etc/dex/tls/tls.crt
       tlsKey: /etc/dex/tls/tls.key
-    #connectors:
-    #- type: github
-    #  id: github
-    #  name: GitHub
-    #  config:
-    #    clientID: $GITHUB_CLIENT_ID
-    #    clientSecret: $GITHUB_CLIENT_SECRET
-    #    redirectURI: https://dex.example.com:32000/callback
-    #    org: kubernetes
     oauth2:
       skipApprovalScreen: true
 
