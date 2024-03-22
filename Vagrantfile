@@ -5,7 +5,7 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 require 'ipaddr'
 
 # see https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
-kubeadm_version = '1.28.1-1.1'
+kubeadm_version = '1.29*'
 # see https://github.com/etcd-io/etcd/releases
 # NB make sure you use a compatible version
 # renovate: datasource=github-releases depName=etcd-io/etcd versioning=semver-coerced
