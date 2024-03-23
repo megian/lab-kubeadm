@@ -11,7 +11,7 @@ CILIUM_HELM_CHART_VERSION=1.15.2
 
 helm upgrade --install cilium cilium/cilium --version $CILIUM_HELM_CHART_VERSION \
     --namespace kube-system \
-    --set kubeProxyReplacement=strict \
+    --set kubeProxyReplacement=true \
     --set k8sServiceHost=vip.$(hostname -d) \
     --set k8sServicePort=6443
 
