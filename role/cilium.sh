@@ -1,13 +1,13 @@
 #!/bin/bash
 set -euxo pipefail
 
-# https://docs.cilium.io/en/v1.13/installation/k8s-install-kubeadm/
+# https://docs.cilium.io/en/v1.16/installation/k8s-install-kubeadm/
 helm repo add cilium https://helm.cilium.io/
 
 helm search repo cilium --versions | head
 
 # renovate: datasource=helm depName=cilium/cilium registryUrl=https://helm.cilium.io
-CILIUM_HELM_CHART_VERSION=1.15.2
+CILIUM_HELM_CHART_VERSION=1.16.1
 
 helm upgrade --install cilium cilium/cilium --version $CILIUM_HELM_CHART_VERSION \
     --namespace kube-system \
