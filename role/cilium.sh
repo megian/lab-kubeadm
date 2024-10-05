@@ -9,7 +9,7 @@ helm search repo cilium --versions | head
 # renovate: datasource=helm depName=cilium/cilium registryUrl=https://helm.cilium.io
 CILIUM_HELM_CHART_VERSION=1.16.1
 
-helm upgrade --install cilium cilium/cilium --version $CILIUM_HELM_CHART_VERSION \
+helm upgrade --install cilium cilium --version $CILIUM_HELM_CHART_VERSION \
     --namespace kube-system \
     --set kubeProxyReplacement=true \
     --set k8sServiceHost=vip.$(hostname -d) \
