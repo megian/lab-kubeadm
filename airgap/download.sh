@@ -3,14 +3,13 @@
 
 # root@n1:~# kubeadm config images pull
 # root@n1:~# crictl images
-# IMAGE                                TAG                 IMAGE ID            SIZE
-# ghcr.io/kube-vip/kube-vip                 v0.7.2              8d43524f9a41b       49.3MB
-# quay.io/cilium/cilium                     <none>              2480b5e5b4799       486MB
-# quay.io/cilium/operator-generic           <none>              0a8a49dbe533a       86.8MB
-# registry.k8s.io/coredns/coredns           v1.11.1             cbb01a7bd410d       61.2MB
-# registry.k8s.io/etcd                      3.5.12-0            3861cfcd7c04c       151MB
-# registry.k8s.io/kube-apiserver            v1.29.3             39f995c9f1996       129MB
-# registry.k8s.io/kube-controller-manager   v1.29.3             6052a25da3f97       123MB
-# registry.k8s.io/kube-proxy                v1.29.3             a1d263b5dc5b0       83.6MB
-# registry.k8s.io/kube-scheduler            v1.29.3             8c390d98f50c0       60.7MB
+# IMAGE                                     TAG                 IMAGE ID            SIZE
+# ghcr.io/kube-vip/kube-vip                 v0.8.3              18b729c2288dc       50.1MB
+# quay.io/cilium/cilium                     <none>              119e6111c0e41       623MB
+# quay.io/cilium/operator-generic           <none>              d3cf9fb7f3cba       105MB
+# registry.k8s.io/coredns/coredns           v1.11.3             c69fa2e9cbf5f       63.3MB
+# registry.k8s.io/etcd                      3.5.15-0            2e96e5913fc06       149MB
+# registry.k8s.io/kube-apiserver            v1.30.5             e9adc5c075a83       118MB
+# registry.k8s.io/kube-controller-manager   v1.30.5             38406042cf085       112MB
+# registry.k8s.io/kube-scheduler            v1.30.5             25903461e65c3       63.1MB
 # registry.k8s.io/pause                     3.9                 e6f1816883972       750kB

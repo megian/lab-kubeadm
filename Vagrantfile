@@ -5,7 +5,7 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 require 'ipaddr'
 
 # see https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
-kubeadm_version = '1.29*'
+kubeadm_version = '1.30*'
 # see https://github.com/etcd-io/etcd/releases
 # NB make sure you use a compatible version
 # renovate: datasource=github-releases depName=etcd-io/etcd versioning=semver-coerced
@@ -56,6 +56,7 @@ Vagrant.configure(2) do |config|
     lv.cpu_mode = 'host-passthrough'
     lv.nested = true
     lv.keymap = 'pt'
+    lv.management_network_name = 'lab-kubeadm'
     config.vm.synced_folder '.', '/vagrant', type: 'nfs', nfs_version: '4.2', nfs_udp: false
   end
 

@@ -1,29 +1,24 @@
 #!/bin/bash
 set -euxo pipefail
 
-VERSION="${1:-1.29}"; shift || true
+VERSION="${1:-1.30}"; shift || true
 
 # Installing runtime CRI-O
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o
 
-## Letting iptables see bridged traffic
-## https://kubernetes.io/docs/setup/production-environment/container-runtimes/#forwarding-ipv4-and-letting-iptables-see-bridged-traffic
+## Enable IPv4 packet forwarding
+## https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional
 
 # Create the .conf file to load the modules at bootup
-cat <<EOF | tee /etc/modules-load.d/crio.conf
-overlay
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 br_netfilter
 EOF
 
-modprobe overlay
 modprobe br_netfilter
 
 # Set up required sysctl params, these persist across reboots.
 cat <<EOF | tee /etc/sysctl.d/99-kubernetes-cri.conf
-net.bridge.bridge-nf-call-iptables  = 1
 net.ipv4.ip_forward                 = 1
-
-net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv6.ip_forward                 = 1
 EOF
 sysctl --system
