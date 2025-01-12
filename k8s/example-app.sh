@@ -7,7 +7,7 @@ domain="$(hostname --domain)"
 kubectl apply -f - <<EOF
 ---
 # see https://kubernetes.io/docs/concepts/services-networking/ingress/
-# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#ingress-v1-networking-k8s-io
+# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#ingress-v1-networking-k8s-io
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -26,7 +26,7 @@ spec:
                   name: web
 ---
 # see https://kubernetes.io/docs/concepts/services-networking/service/
-# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#service-v1-core
+# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#service-v1-core
 apiVersion: v1
 kind: Service
 metadata:
@@ -42,9 +42,9 @@ spec:
       targetPort: web
 ---
 # see https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
-# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#daemonset-v1-apps
-# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podtemplatespec-v1-core
-# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#container-v1-core
+# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#daemonset-v1-apps
+# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#podtemplatespec-v1-core
+# see https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#container-v1-core
 # see https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 apiVersion: apps/v1
 kind: DaemonSet
