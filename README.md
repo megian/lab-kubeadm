@@ -41,6 +41,11 @@ time vagrant up --no-destroy-on-error --no-tty [--provider=libvirt]
 
 **NB** The controlplane VMs (e.g. `cp1`) are [tainted](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to prevent them from executing non control-plane workloads. That kind of workload is executed in the worker nodes (e.g. `w1`).
 
+Ignore all plugin update:
+```bash
+VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant plugin update
+```
+
 ## Kubernetes API
 
 Access the Kubernetes API at:
