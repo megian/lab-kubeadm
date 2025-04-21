@@ -44,7 +44,7 @@ spec:
       value: "6443"
     - name: vip_interface
       value: ${INTERFACE}
-    - name: vip_cidr
+    - name: vip_subnet
       value: "32"
     - name: cp_enable
       value: "true"
