@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-VERSION="${1:-1.32}"; shift || true
+VERSION="${1:-1.33}"; shift || true
 
 # Installing runtime CRI-O
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o
@@ -24,9 +24,15 @@ EOF
 sysctl --system
 
 ## Install CRI-O packages
-echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/ /" | tee /etc/apt/sources.list.d/cri-o.list
+#echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/ /" | tee /etc/apt/sources.list.d/cri-o.list
 
-curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
+#curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
+
+curl -fsSL https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v$VERSION/deb/Release.key |
+    gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v$VERSION/deb/ /" |
+    tee /etc/apt/sources.list.d/cri-o.list
 
 apt-get update
 apt-get install -y cri-o
