@@ -84,7 +84,7 @@ Vagrant.configure(2) do |config|
       config.vm.provision 'shell', path: 'role/cri-o.sh'
       config.vm.provision 'shell', path: 'role/kube-vip.sh', args: [
         allinone_vip,
-        'eth1',
+        'ens6',
       ]
       config.vm.provision 'shell', path: 'role/kubeadm.sh', args: [
         n == 1 ? "cluster-init" : "cluster-join",
@@ -133,7 +133,7 @@ Vagrant.configure(2) do |config|
       config.vm.provision 'shell', path: 'role/cri-o.sh'
       config.vm.provision 'shell', path: 'role/kube-vip.sh', args: [
         allinone_vip,
-        'eth1',
+        'ens6',
       ]
     end
   end
