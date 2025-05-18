@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-helm repo add headlamp https://headlamp-k8s.github.io/headlamp/
+helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
 
 # now you should be able to install headlamp via helm
 helm install my-headlamp headlamp/headlamp --namespace kube-system --set service.type=NodePort
