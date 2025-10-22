@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
-VERSION="${1:-1.33}"; shift || true
+VERSION="${1:-1.34}"; shift || true
 
 # Installing runtime CRI-O
 # https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cri-o
