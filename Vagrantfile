@@ -48,7 +48,7 @@ application_domain = 'apps.kubeadm.lab'
 
 Vagrant.configure(2) do |config|
   # https://app.vagrantup.com/debian
-  config.vm.box = 'cloud-image/debian-12'
+  config.vm.box = 'cloud-image/debian-13'
 
   # https://github.com/vagrant-libvirt/vagrant-libvirt
   config.vm.provider 'libvirt' do |lv, config|
