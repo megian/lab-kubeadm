@@ -38,6 +38,15 @@ apt-get update
 apt-get install -y cri-o
 apt-mark hold cri-o
 
+## Reenable short
+# https://github.com/cri-o/cri-o/pull/9401
+# https://github.com/grafana/helm-charts/issues/3923
+# https://github.com/grafana/loki/pull/19233
+cat <<EOF | tee /etc/crio/crio.conf.d/short_name_mode.conf
+[crio.image]
+short_name_mode = "disabled"
+EOF
+
 ## Start CRI-O
 systemctl daemon-reload
 systemctl enable crio --now
