@@ -19,7 +19,7 @@ sudo apt install vagrant
 
 Vagrant Arch:
 ```bash
-sudo pacman -S vagrant libvirt pkg-config dnsmasq
+sudo pacman -S vagrant libvirt qemu-base pkg-config dnsmasq
 ```
 
 Arch for NFS:
@@ -30,7 +30,7 @@ sudo pacman -S nfs-utils
 Install the required vagrant plugins:
 
 ```bash
-sudo vagrant plugin install vagrant-hosts vagrant-libvirt
+vagrant plugin install vagrant-hosts vagrant-libvirt
 ```
 
 Launch the environment:
