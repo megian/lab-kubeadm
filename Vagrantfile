@@ -53,7 +53,6 @@ Vagrant.configure(2) do |config|
   # https://github.com/vagrant-libvirt/vagrant-libvirt
   config.vm.provider 'libvirt' do |lv, config|
     lv.cpus = 2
-    lv.cpu_mode = 'host-passthrough'
     lv.nested = true
     lv.keymap = 'pt'
     lv.management_network_name = 'lab-kubeadm'
