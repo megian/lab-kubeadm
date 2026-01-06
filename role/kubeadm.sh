@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 kubeadm_command="${1:-cluster-init}"; shift || true
-kubeadm_version="${1:-1.35*}"; shift || true
+kubeadm_version="${1:-1.35}"; shift || true
 
 function step (
     # Black        0;30     Dark Gray     1;30
@@ -21,16 +21,16 @@ function step (
 )
 
 step "Download the public signing key for the Kubernetes package repositories"
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.35/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v${kubeadm_version}/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 step "Add the Kubernetes apt repository"
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.35/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v${kubeadm_version}/deb/ /" | tee /etc/apt/sources.list.d/kubernetes.list
 
 # apt list -a kubeadm
 
 step "Update apt package index, install kubelet, kubeadm and kubectl, and pin their version"
 apt-get update
-apt-get install -y kubelet=$kubeadm_version kubeadm=$kubeadm_version kubectl=$kubeadm_version
+apt-get install -y kubelet=${kubeadm_version}* kubeadm=${kubeadm_version}* kubectl=${kubeadm_version}*
 apt-mark hold kubelet kubeadm kubectl
 
 kubectl completion bash >/usr/share/bash-completion/completions/kubectl
@@ -54,6 +54,9 @@ install -d /vagrant/tmp/
 
 # Generate certificate if not exist
 [ ! -f /vagrant/tmp/certificate-key ] && openssl rand -hex 32 > /vagrant/tmp/certificate-key
+
+# Show Network Inferfaces
+ip a
 
 if [ "$kubeadm_command" == 'cluster-init' ]; then
   step "Cluster Init"
