@@ -24,10 +24,6 @@ EOF
 sysctl --system
 
 ## Install CRI-O packages
-#echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/ /" | tee /etc/apt/sources.list.d/cri-o.list
-
-#curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/v$VERSION/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
-
 curl -fsSL https://download.opensuse.org/repositories/isv:/cri-o:/stable:/v$VERSION/deb/Release.key |
     gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
 
