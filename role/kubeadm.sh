@@ -30,8 +30,8 @@ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 
 step "Update apt package index, install kubelet, kubeadm and kubectl, and pin their version"
 apt-get update
-apt-get install -y kubelet=${kubeadm_version}* kubeadm=${kubeadm_version}* kubectl=${kubeadm_version}*
-apt-mark hold kubelet kubeadm kubectl
+apt-get install -y kubelet=${kubeadm_version}* kubeadm=${kubeadm_version}* kubectl=${kubeadm_version}* cri-tools
+apt-mark hold kubelet kubeadm kubectl cri-tools
 
 kubectl completion bash >/usr/share/bash-completion/completions/kubectl
 
