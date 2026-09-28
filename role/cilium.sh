@@ -7,7 +7,7 @@ helm repo add cilium https://helm.cilium.io/
 helm search repo cilium --versions | head
 
 # renovate: datasource=helm depName=cilium registryUrl=https://helm.cilium.io
-CILIUM_HELM_CHART_VERSION=1.18.3
+CILIUM_HELM_CHART_VERSION=1.19.8
 
 helm upgrade --install cilium cilium/cilium --version $CILIUM_HELM_CHART_VERSION \
     --namespace kube-system \

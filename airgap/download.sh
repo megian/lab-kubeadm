@@ -6,9 +6,9 @@
 # IMAGE                                     TAG                 IMAGE ID            SIZE
 # ghcr.io/dexidp/dex                        latest-distroless   e5de657f62278       162MB
 # ghcr.io/kube-vip/kube-vip                 v1.2.4              d37d19befda3a       61.1MB
-# quay.io/cilium/cilium-envoy               <none>              a30b64b9f8378       181MB
-# quay.io/cilium/cilium                     <none>              443f0e7d02324       720MB
-# quay.io/cilium/operator-generic           <none>              f7669f7f90730       117MB
+# quay.io/cilium/cilium-envoy               <none>              18f3aea3c0c65       203MB
+# quay.io/cilium/cilium                     <none>              09fc98d1b2d27       756MB
+# quay.io/cilium/operator-generic           <none>              5847b20e503f7       117MB
 # registry.k8s.io/coredns/coredns           v1.14.2             38667dd9be96c       77.3MB
 # registry.k8s.io/etcd                      3.6.8-0             ee85eb1f0edd2       63.6MB
 # registry.k8s.io/kube-apiserver            v1.36.5             d350c55cb17bb       97.1MB
